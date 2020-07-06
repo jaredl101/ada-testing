@@ -54,50 +54,50 @@ const Item = withStyles(legendItemStyles, { name: 'LegendItem' })(legendItemBase
 
 class Bodyweight extends Component {
   render() {
- 
+
     console.log(`this.props.bodyweight.length ${this.props.bodyweight.length}`);
-    
-    if(this.props.bodyweight.length !== 0){
+
+    if (this.props.bodyweight.length !== 0) {
       const { bodyweight } = this.props;
-   
+
       data = [
-        { argument: 'Day ' + new Date(bodyweight[0].date).getDate(), value: bodyweight[0].weight + ' lbs'},
-        { argument: 'Day ' + new Date(bodyweight[1].date).getDate(), value: bodyweight[1].weight + ' lbs'},
-        { argument: 'Day ' + new Date(bodyweight[2].date).getDate(), value: bodyweight[2].weight + ' lbs'},
-        { argument: 'Day ' + new Date(bodyweight[3].date).getDate(), value: bodyweight[3].weight + ' lbs'},
-        { argument: 'Day ' + new Date(bodyweight[4].date).getDate(), value: bodyweight[4].weight + ' lbs'},
-        { argument: 'Day ' + new Date(bodyweight[5].date).getDate(), value: bodyweight[5].weight + ' lbs'},
-        { argument: 'Day ' + new Date(bodyweight[6].date).getDate(), value: bodyweight[6].weight + ' lbs'},
-        { argument: 'Day ' + new Date(bodyweight[7].date).getDate(), value: bodyweight[7].weight + ' lbs'},
-        { argument: 'Day ' + new Date(bodyweight[8].date).getDate(), value: bodyweight[8].weight + ' lbs'},
-        { argument: 'Day ' + new Date(bodyweight[9].date).getDate(), value: bodyweight[9].weight + ' lbs'},
-        
+        { argument: 'Day ' + new Date(bodyweight[0].date).getDate(), value: bodyweight[0].weight + ' lbs' },
+        { argument: 'Day ' + new Date(bodyweight[1].date).getDate(), value: bodyweight[1].weight + ' lbs' },
+        { argument: 'Day ' + new Date(bodyweight[2].date).getDate(), value: bodyweight[2].weight + ' lbs' },
+        { argument: 'Day ' + new Date(bodyweight[3].date).getDate(), value: bodyweight[3].weight + ' lbs' },
+        { argument: 'Day ' + new Date(bodyweight[4].date).getDate(), value: bodyweight[4].weight + ' lbs' },
+        { argument: 'Day ' + new Date(bodyweight[5].date).getDate(), value: bodyweight[5].weight + ' lbs' },
+        { argument: 'Day ' + new Date(bodyweight[6].date).getDate(), value: bodyweight[6].weight + ' lbs' },
+        { argument: 'Day ' + new Date(bodyweight[7].date).getDate(), value: bodyweight[7].weight + ' lbs' },
+        { argument: 'Day ' + new Date(bodyweight[8].date).getDate(), value: bodyweight[8].weight + ' lbs' },
+        { argument: 'Day ' + new Date(bodyweight[9].date).getDate(), value: bodyweight[9].weight + ' lbs' },
+
       ];
     }
-    
-    return (
-    <Paper>
-      <Chart
-        data={data}
-      >
-        <ArgumentAxis />
-        <ValueAxis />
 
-        <LineSeries 
-        name="Jared"
-        color="red"
-        valueField="value" 
-        argumentField="argument" 
-        
-        />
+    return (
+      <Paper>
+        <Chart
+          data={data}
+        >
+          <ArgumentAxis />
+          <ValueAxis />
+
+          <LineSeries
+            name="Jared"
+            color="red"
+            valueField="value"
+            argumentField="argument"
+
+          />
           <Legend position="bottom" rootComponent={Root} itemComponent={Item} labelComponent={Label} />
-        <Title 
+          <Title
             text={`Bodyweight change over time`}
-            />
-      </Chart>
- 
-    </Paper>
-);
+          />
+        </Chart>
+
+      </Paper>
+    );
   }
 }
 

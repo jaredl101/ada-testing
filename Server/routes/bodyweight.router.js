@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool');
-const { response } = require('express');
 
 router.get('/', (req, res) => {
   console.log('In GET /api/bodyweight');

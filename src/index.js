@@ -1,17 +1,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import App from './components/App/App';
+//import registerServiceWorker from './registerServiceWorker';
+import logger from 'redux-logger';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+// Redux
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+
+const feedbackReducer = (state = {  }, action) => {
+  let newState = { ...state };
+  if (action.type === "ADD_INFO") {
+    newState = { ...newState, ...action.payload };
+  }
+  return newState;
+};
+
+
+const storeInstance = createStore(
+  combineReducers({
+    feedbackReducer,
+  }),
+  applyMiddleware(logger),
 );
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+ReactDOM.render(<Provider store={storeInstance}><App /></Provider>, document.getElementById('root'));
+//registerServiceWorker();

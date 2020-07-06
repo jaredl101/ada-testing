@@ -5,7 +5,7 @@ const { response } = require('express');
 
 router.get('/', (req, res) => {
   console.log('In GET /api/bodyweight');
-  pool.query('SELECT * from "bodyweight"').then((result) => {
+  pool.query('SELECT * from "bodyweight" ORDER by id ASC').then((result) => {
     res.send(result.rows);
   }).catch((error) => {
     console.log('Error GET /api/bodyweight', error)

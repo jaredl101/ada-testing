@@ -1,21 +1,29 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.css';
 import { HashRouter as Router, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 
 // Component Imports:
 import Header from '../Header/Header';
-import Chart from '../Chart/Chart';
+import Bodyweight from '../Bodyweight/Bodyweight';
 
-function App() {
+
+class App extends Component {
+  componentDidMount() {
+    this.props.dispatch({ type: 'FETCH_BODYWEIGHT' })
+  }
+
+  render() {
   return (
     <Router>
       <div className="App">
         <Header />
-        <Route exact path ='/' component={Chart} />
+        <Route exact path ='/' component={Bodyweight} />
       </div>
     </Router>
   );
+  }
 }
 
-export default App;
+export default connect()(App);
